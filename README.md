@@ -1,68 +1,75 @@
-# Voice-Based Bill Payment System
+# 🏦 Voice-Based Bill Payment System
 
-## 📌 Project Overview
-The **Voice-Based Bill Payment System** is an AI-powered solution designed to streamline bill payments through voice commands. This system integrates **Whisper** for Speech-to-Text (STT), **Llama 2.1** for Natural Language Understanding (NLU), and API integrations for fetching and processing bill payments in a seamless and secure manner. The system supports multiple Indian languages, ensuring accessibility for a diverse user base.
+## 🚀 Introduction
+The **Voice-Based Bill Payment System** is an AI-powered assistant that enables users to check and pay their bills using voice commands. It leverages **Ollama's Llama3.2 LLM**, **LangChain**, and **Whisper for Speech-to-Text (STT)** to provide a seamless, voice-driven experience.
 
-## 🔹 Features
-- **🎙️ Voice Interaction** – Users can fetch and pay bills using voice commands.
-- **🌍 Multilingual Support** – Supports multiple Indian languages for broader accessibility.
-- **🤖 AI-Powered Assistance** – Utilizes Llama 2.1 for smart bill-related conversations.
-- **🔐 Secure Transactions** – Integrates with APIs for reliable and safe payments.
-- **⚡ Fast Processing** – Ensures bill payments within **10 seconds**.
-- **🚫 Strict Domain Control** – AI only handles bill-related queries.
+## ✨ Features
+✅ Supports multiple Indian languages.  
+✅ Fetch bill details and process payments securely.  
+✅ Voice input & output support using Whisper.  
+✅ Interactive and user-friendly AI assistant.  
+✅ Open-source and extendable architecture.  
 
-## 🔹 Technology Stack
-- **Speech-to-Text (STT):** Whisper (for voice command recognition)
-- **Natural Language Processing (NLP):** Llama 2.1 3B (for understanding user queries)
-- **Backend:** Python (FastAPI/Flask for API handling)
-- **Database:** NoSQL (MongoDB) / SQL (PostgreSQL) for storing bill records
-- **Integration:** REST APIs for fetching and processing bill payments
-- **Version Control:** Git & GitHub for source code management
+---
 
-## 🔹 How It Works
-1. **User Speaks a Command** → "I want to check my electricity bill."
-2. **Speech-to-Text Conversion** → Whisper transcribes speech into text.
-3. **AI Processing** → Llama 2.1 understands and requests the bill number.
-4. **Bill Fetching** → The system retrieves bill details from the database/API.
-5. **User Confirmation** → The user confirms the bill payment.
-6. **Payment Processing** → The system securely processes the payment.
-7. **Acknowledgment** → AI confirms the payment and asks if further help is needed.
+## 🛠️ Installation Guide
 
-## 🔹 Use Cases
-- **👴 Elderly or visually impaired users** who prefer voice commands.
-- **🏃 Busy professionals** who want quick bill payments on the go.
-- **🙌 Hands-free experience** for users who prefer a seamless bill payment solution.
-
-## 🔹 Installation & Setup
-### Prerequisites
-- Python 3.8+
-- pip
-- Whisper (for Speech-to-Text)
-- Llama 2.1 API integration
-- FastAPI/Flask
-- MongoDB/PostgreSQL
-
-### Steps to Install & Run
-1. Clone the repository:
+### 🔹 Step 1: Install Ollama
+1️⃣ Download **Ollama** from the official website: [Ollama Download](https://ollama.com/download/windows)  
+2️⃣ Install Ollama on your system.  
+3️⃣ Open Command Prompt and run the following command to install **Llama3.2**:  
    ```sh
-   git clone https://github.com/yourusername/voice-based-bill-payment-system.git
-   cd voice-based-bill-payment-system
+   ollama run llama3.2
    ```
-2. Install dependencies:
+4️⃣ To exit the Ollama prompt, use:  
    ```sh
-   pip install -r requirements.txt
+   /bye
    ```
-3. Run the application:
+5️⃣ To restart Ollama anytime, run:  
    ```sh
-   python app.py
+   ollama run llama3.2
    ```
-4. Start interacting with the AI via voice commands!
 
-## 🔹 Contributing
-We welcome contributions! Feel free to submit issues, create pull requests, or suggest improvements.
+### 🔹 Step 2: Install Python & Dependencies
+1️⃣ Download and install **Python 3.11.10** from [Python Official Website](https://www.python.org/downloads/).  
+2️⃣ Set Python in your **environment variables**.  
+3️⃣ Install the required dependencies by running:  
+   ```sh
+   pip3 install langchain
+   pip3 install pyttsx3
+   pip3 install speech_recognition
+   ```
 
-## 🔹 License
-This project is open-source and available under the MIT License.
+### 🔹 Step 3: Clone the Project Repository
+Clone this repository to your local machine:
+```sh
+git clone <your-repo-link>
+cd voice-based-bill-payment-system
+```
 
-🚀 **Experience the future of bill payments with voice automation!**
+### 🔹 Step 4: Run the Application
+Navigate to the project base directory and start the service by running:
+```sh
+python serviceClassLLM.py
+```
+📝 **Note:** `serviceClassLLM.py` is the main application that processes bill payments via voice interaction.
+
+---
+
+## 🎤 Usage Instructions
+1️⃣ Run the app as mentioned above.  
+2️⃣ Follow the voice prompts to provide bill details.  
+3️⃣ Confirm payment when prompted.  
+4️⃣ The AI will fetch, display, and process your bill payment securely.  
+
+---
+
+## 🤝 Contributions
+This project is **open-source**, and contributions are welcome!  
+Feel free to **create a pull request** with any improvements.  
+
+---
+
+## 📜 License
+This project is licensed under the **MIT License**.
 

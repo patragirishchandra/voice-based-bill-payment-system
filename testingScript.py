@@ -8,9 +8,9 @@ from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 llm = ChatOllama(model="llama3.2", temperature=0)
 
 billDB = {
-    9182:{'Customer Name':'Asutosh Dalei','service provider':'TS Elec Board','unit':32,'Amount':341, "Due Date":'10/01/2025', 'status':'Paid'},
-    1928:{'Customer Name':'Asutosh Dalei','service provider':'TS Elec Board','unit':37,'Amount':547, "Due Date":'11/02/2025','status':'Unpaid'},
-    1038:{'Customer Name':'Asutosh Dalei','service provider':'TS Elec Board','unit':23,'Amount':298, "Due Date":'09/10/2025','status':'Paid'}
+    9182:{'Customer Name':'Girish Chandra Patra','service provider':'TS Elec Board','unit':32,'Amount':341, "Due Date":'10/01/2025', 'status':'Paid'},
+    1928:{'Customer Name':'Girish Chandra Patra','service provider':'TS Elec Board','unit':37,'Amount':547, "Due Date":'11/02/2025','status':'Unpaid'},
+    1038:{'Customer Name':'Girish Chandra Patra','service provider':'TS Elec Board','unit':23,'Amount':298, "Due Date":'09/10/2025','status':'Paid'}
 }
 
 

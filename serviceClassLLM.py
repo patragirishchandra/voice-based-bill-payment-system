@@ -32,14 +32,19 @@ PayLLM: Sure.
 PayLLM: The bill is paid.
 '''
 
-
 billDB = {
-    9182:{'Customer Name':'Asutosh Dalei','service provider':'TS Elec Board','unit':32,'Amount':341, "Due Date":'10/01/2025', 'status':'Paid', 'service':'Electricity'},
-    1928:{'Customer Name':'Asutosh Dalei','service provider':'TS Elec Board','unit':37,'Amount':547, "Due Date":'11/02/2025','status':'Unpaid', 'service':'Electricity'},
-    1038:{'Customer Name':'Asutosh Dalei','service provider':'TS Elec Board','unit':23,'Amount':298, "Due Date":'09/10/2025','status':'Paid', 'service':'Electricity'},
-    8321 :{'Customer Name':'Asutosh Dalei','service provider':'Airtel','Amount':1008, "Due Date":'04/03/2025', 'status':'Paid', 'service':'WiFi'},
-    1008:{'Customer Name':'Asutosh Dalei','service provider':'Airtel','Amount':1276, "Due Date":'04/02/2025','status':'Paid', 'service':'WiFi'},
-    1035:{'Customer Name':'Asutosh Dalei','service provider':'Airtel','Amount':1932, "Due Date":'08/04/2025','status':'Unpaid', 'service':'WiFi'}
+    9182: {'Customer Name': 'Girish Chandra Patra', 'service provider': 'TS Elec Board', 'unit': 32, 'Amount': 341,
+           "Due Date": '10/01/2025', 'status': 'Paid', 'service': 'Electricity'},
+    1928: {'Customer Name': 'Sundeep', 'service provider': 'TS Elec Board', 'unit': 37, 'Amount': 547,
+           "Due Date": '11/02/2025', 'status': 'Unpaid', 'service': 'Electricity'},
+    1038: {'Customer Name': 'Pavani', 'service provider': 'TS Elec Board', 'unit': 23, 'Amount': 298,
+           "Due Date": '09/10/2025', 'status': 'Paid', 'service': 'Electricity'},
+    8321: {'Customer Name': 'Vadi', 'service provider': 'Airtel', 'Amount': 1008, "Due Date": '04/03/2025',
+           'status': 'Paid', 'service': 'WiFi'},
+    1008: {'Customer Name': 'Manoj', 'service provider': 'Airtel', 'Amount': 1276, "Due Date": '04/02/2025',
+           'status': 'Paid', 'service': 'WiFi'},
+    1035: {'Customer Name': 'Hari', 'service provider': 'Airtel', 'Amount': 1932, "Due Date": '08/04/2025',
+           'status': 'Unpaid', 'service': 'WiFi'}
 }
 
 
@@ -56,6 +61,7 @@ def payBill(billNumber: int) -> str:
     billDB[billNumber]['status'] = 'Paid'
     return "Bill paid successfully"
 
+
 @tool
 def fetchBill(billNumber):
     """
@@ -67,13 +73,15 @@ def fetchBill(billNumber):
         return json.dumps(billDB[billNumber])
     except:
         return "Bill not found"
-    
-serviceTools = [fetchBill,payBill]
-serviceToolsMap = {"fetchBill":fetchBill, "payBill": payBill}
+
+
+serviceTools = [fetchBill, payBill]
+serviceToolsMap = {"fetchBill": fetchBill, "payBill": payBill}
 
 
 def event(llm):
-    serviceMessages = [SystemMessage(content = initialSystemMessage), HumanMessage(content='Help me fetch my bill. Ask me my bill number.')]
+    serviceMessages = [SystemMessage(content=initialSystemMessage),
+                       HumanMessage(content='Help me fetch my bill. Ask me my bill number.')]
     llmService = llm
     aiMsgSer = llmService.invoke(serviceMessages)
     firstInteraction = True
@@ -95,13 +103,14 @@ def event(llm):
         userInput = input("User Input:\n -->")
         if userInput == "/end":
             break
-        serviceMessages.append(HumanMessage(content = userInput))
+        serviceMessages.append(HumanMessage(content=userInput))
         aiMsgSer = llmService.invoke(serviceMessages)
         if aiMsgSer.content != '':
             print(f"AI Response:\n--> {aiMsgSer.content}")
-        serviceMessages.append(HumanMessage(content = userInput))
+        serviceMessages.append(HumanMessage(content=userInput))
+
 
 try:
     event(llm)
 except Exception as e:
-    print('ERR',e)
+    print('ERR', e)

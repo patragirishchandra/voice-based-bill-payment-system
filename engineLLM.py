@@ -16,8 +16,8 @@ def fetchUserDetails() -> str:
     """
     Function contains the information about the user. Returns information such as user name, account holder status, amazon id.
     """
-    userDetails = '''User Name: Asutosh Dalei, Account Status: Active, Amazon ID: 12345'''
-    userDetails = {'user_name':"Asutosh Dalei", "account_status":"Active", "amazon_id": 12345}
+    userDetails = '''User Name: Girish Chandra Patra, Account Status: Active, Amazon ID: 12345'''
+    userDetails = {'user_name':"Girish Chandra Patra", "account_status":"Active", "amazon_id": 12345}
 
     return json.dumps(userDetails)
 

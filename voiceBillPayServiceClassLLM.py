@@ -2,10 +2,15 @@
 import json
 import speech_recognition as sr  # Uses speech_recognition to capture user voice.
 import pyttsx3  # Uses pyttsx3 to convert AI responses into speech.
+import speech_recognition as sr
 
 from langchain_ollama import ChatOllama
 from langchain_core.tools import tool
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+
+#print if any microphone is available 
+print("Available Microphones:")
+print(sr.Microphone.list_microphone_names())
 
 # Initialize Text-to-Speech Engine
 engine = pyttsx3.init()
@@ -27,16 +32,21 @@ def listen():
         print("Listening...")
         recognizer.adjust_for_ambient_noise(source)
         try:
-            audio = recognizer.listen(source, timeout=5)
+            audio = recognizer.listen(source, timeout=5)  # Timeout is 5 seconds
             text = recognizer.recognize_google(audio)
             print(f"User: {text}")
             return text
         except sr.UnknownValueError:
             print("Sorry, I didn't understand.")
+            print("Listening...")
             return ""
         except sr.RequestError:
             print("Speech recognition service unavailable.")
             return ""
+        except sr.WaitTimeoutError:
+            print("Listening timed out. No speech detected.")
+            return ""  # Return empty string to avoid breaking the loop
+
 
 
 # Importing model
@@ -45,8 +55,8 @@ llm = ChatOllama(model="llama3.2", temperature=0)
 # Initial System Message for PayLLM
 initialSystemMessage = '''You are an excellent virtual assistant. Your name is PayLLM. In the first user interaction, respond directly without calling any tools.
 You should strictly follow the following steps:
-🚫 You must **refuse** any non-bill-related questions.
-✅ You should **only** handle bill-related tasks:
+You must **refuse** any non-bill-related questions.
+You should **only** handle bill-related tasks:
 0. Ask the user if they want to pay any bill.
 1. Ask the user the bill number.
 2. Ask the user if you should fetch the bill details.
